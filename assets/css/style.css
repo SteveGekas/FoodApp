@@ -1,9 +1,32 @@
-html {
-    background-image: url('../images/The Sunday Bite (1).png');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+
 
 .columns {
-   margin:5%;
+   margin:1%;
+}
+
+.homeimage {
+    display: inline-block;
+    margin-top: 5%;
+  margin-left: 25%;
+  margin-right: 25%;
+ width: 50%;
+}
+
+.searchRest {
+    background-color: #FFDE59;
+    margin:0%
+}
+
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
 }

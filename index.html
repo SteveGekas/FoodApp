@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body class="container-inline">
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="./index.html">
@@ -25,20 +25,70 @@
                 <a href="./index.html" class="navbar-item is-active">
                     Home
                 </a>
-                <a href="./lists.html"class="navbar-item">
+                <a href="./lists.html" class="navbar-item">
                     List
                 </a>
 
-                <a href="./recipes.html"class="navbar-item">
+                <a href="./recipes.html" class="navbar-item">
                     Recipes
                 </a>
 
 
             </a>
-      </div>
+        </div>
 
-        
+
     </nav>
+    <div class="columns">
+        <div class="column is-two-thirds search">
+            <section class="container-inline">
+                <div style="background-image: assets/images/The Sunday Bite (1).png">
+                    <div class="hero-body">
+                        <p class="title">
+                            Find a Restaurant
+                        </p>
+                        <div class="column is-4">
+                            <div class="field">
+                                <label class="card-title">Location</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Where do you want to go?">
+                                </div>
+
+                            </div>
+                            <div class="control">
+                                <div class="select">
+                                    <select>
+                                        <option>Choose food category</option>
+                                        <option>With options</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <div class="column is-one-third">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        See my lists
+
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <!-- jQuery must be imported before Foundation -->
     <script src="js/jquery.min.js"></script>

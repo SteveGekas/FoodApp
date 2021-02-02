@@ -14,7 +14,7 @@
 </head>
 
 <body class="container-inline">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar" role="navigation" aria-label="main navigation" >
         <div class="navbar-brand">
             <a class="navbar-item" href="./index.html">
                 <img src="./assets/images/fig-dribbble.gif" width="50" height="28">
@@ -40,14 +40,56 @@
 
     </nav>
     <div class="columns">
-        <div class="column is-two-thirds search">
-            <section class="container-inline">
+        <div class="column is-one-third">
+            <div class="card topcards">
+                <div class="card-image  homeimage">
+                    <figure class="image is-128x128 cardicon">
+                        <img src="./assets/images/1.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <p class="card-header-title is-centered">
+                    Search For Restaurants
+                </p>
+            </div>
+        </div>
+        <div class="column is-one-third">
+            <div class="card topcards">
+
+                <div class="card-image homeimage">
+                    <figure class="image is-128x128 cardicon ">
+                        <img src="./assets/images/2.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <p class="card-header-title is-centered">
+                    Save to Your Lists
+                </p>
+
+            </div>
+        </div>
+        <div class="column is-one-third">
+            <div class="card topcards">
+                <div class="card-image homeimage">
+                    <figure class="image is-128x128 cardicon">
+                        <img src="./assets/images/3.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <p class="card-header-title is-centered">
+                    Discover Recipes While You Wait
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container is-fluid searchRest">
+        <div class="columns">
+            <div class="column search">
 
                 <div class="hero-body">
                     <p class="title">
                         Find a Restaurant
                     </p>
-                    <div class="column is-4">
+                    
                         <div class="field">
                             <label class="card-title">Location</label>
                             <div class="control">
@@ -64,44 +106,32 @@
                             </div>
                         </div>
 
-                    </div>
-                    <div class="column">
-                        <iframe width="500" height="350" frameborder="0" style="border:0"
-                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB5txYIT-JDscslwZuBHw0NbgQIf7Qear0&q=Space+Needle,Seattle+WA"
-                            allowfullscreen>
-                        </iframe>
-                
-                    </div>
-            
-
-                </div>
-            </section>
-        </div>
-        
-        <div class="column is-one-third">
-            <div class="card">
-                <header class="card-header">
-                    <p class="card-header-title">
-                        See my lists
-
-                    </p>
-                </header>
-                <div class="card-content">
-                    <div class="content">
-                        <ul>
-                            <li></li>
-                        </ul>
-                    </div>
+                   
                 </div>
             </div>
+
+            <div class="column iframe">
+                <div class="map-responsive">
+                <iframe  width="500" height="350"frameborder="0" style="border:0"
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB5txYIT-JDscslwZuBHw0NbgQIf7Qear0&q=Space+Needle,Seattle+WA"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            </div>
+            </div>
         </div>
-
-
     </div>
-    
+
+
+   
+
+
+
+
+
 
     <!-- jQuery must be imported before Foundation -->
-    <script src="js/jquery.min.js"></script>
+    <script  src="js/jquery.min.js"></script>
 
 </body>
 

@@ -1,32 +1,45 @@
 
-
-.columns {
-   margin:1%;
+.navbar{
+    margin-bottom: 1%;
 }
 
+.topcards{
+    margin:2%
+}
 .homeimage {
     display: inline-block;
     margin-top: 5%;
-  margin-left: 25%;
-  margin-right: 25%;
- width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
 }
 
 .searchRest {
     background-color: #FFDE59;
-    margin:0%
 }
 
-.map-responsive{
-    overflow:hidden;
-    padding-bottom:56.25%;
-    position:relative;
-    height:0;
+.map-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+    margin:3%;
 }
-.map-responsive iframe{
-    left:0;
-    top:0;
-    height:100%;
-    width:100%;
-    position:absolute;
+
+.map-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.searchHomePage {
+    padding:3%;
+}
+
+.searchResults {
+    margin-top:5%;
+    padding:3%;
+
 }

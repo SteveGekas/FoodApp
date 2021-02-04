@@ -1,4 +1,4 @@
-
+//var googleMap = document.querySelector("#map");
 function handleSearchFormSubmit(event) {
     event.preventDefault();
 
@@ -21,6 +21,24 @@ function handleSearchFormSubmit(event) {
             console.log(data);
         })
 }
+
+var script = document.createElement('script');
+script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB5txYIT-JDscslwZuBHw0NbgQIf7Qear0&callback=initMap';
+script.defer = true;
+
+window.initMap = function() {
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 8,
+      });
+    }
+    // JS API is loaded and available
+  
+  
+  // Append the 'script' element to 'head'
+  document.head.appendChild(script);
+
+
 
 
 document.querySelector(".submit").addEventListener('click', handleSearchFormSubmit);

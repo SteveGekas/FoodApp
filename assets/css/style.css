@@ -18,7 +18,7 @@
     background-color: #FFDE59;
 }
 
-.map-responsive {
+/*.map-responsive {
     overflow: hidden;
     padding-bottom: 56.25%;
     position: relative;
@@ -32,7 +32,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-}
+}*/
 
 .searchHomePage {
     padding:3%;
@@ -43,3 +43,6 @@
     padding:3%;
 
 }
+#map {
+    height: 100%;
+  }

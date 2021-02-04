@@ -1,7 +1,7 @@
-.body {
+body {
     background-image: url("../../assets/images/1500907191-mike-garten-cherry-tomato-confit-0817-1581008163.jpg");
      /* Full height */
-   height: 100%;
+   height: 100vh;
  
    /* Center and scale the image nicely */
    background-position: center;

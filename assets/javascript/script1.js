@@ -104,6 +104,14 @@ var cuisine = [
 {cuisine_name: "Vietnamese",cuisine_id: "99"}
 ]
 
+var userRestSearch =[];
+var cuisineDropDownID = [];
+var cuisineDropDownName = [];
+var restaurantList = [];
+var restaurantLong = [];
+var restaurantLat = [];
+
+
 var cuisineListEl = document.querySelector(".select")
 for (i = 0; i < cuisine.length; i++) {
     var opt = document.createElement('option');
@@ -127,8 +135,17 @@ function handleSearchFormSubmit(event) {
 
     var searchInputVal = document.querySelector(".searchCity").value;
     var dropInputVal = document.querySelector(".select").value;
+    var dropInputText = document.querySelector(".select").textContent;
+    userRestSearch.push(searchInputVal);
+    cuisineDropDownID.push(dropInputVal);
+
+
+    console.log(userRestSearch)
+    console.log(dropInputVal)
+
    
    restaurantURL = "https://developers.zomato.com/api/v2.1/cities?q=" + searchInputVal 
+   
 
 
    // 
@@ -173,25 +190,74 @@ function cuisineSearch(dropInputVal,cityid){
         })
         .then(function (data) {
             console.log(data);
-          
-        })
+            for (i = 0; i < data.restaurants.length; i++){
+            var restNames = data.restaurants[i].restaurant.name
+            var restLong = data.restaurants[i].restaurant.location.longitude
+            var restLat = data.restaurants[i].restaurant.location.latitude
+            console.log(restNames)
+            restaurantList.push(restNames)
+            restaurantLat.push(restLat)
+            restaurantLong.push(restLong)}
+            console.log(restaurantList)
+            console.log(restaurantLat)
+            console.log(restaurantLong)
+            initMap();
+       })
+      
+      
 }
+
+//https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyB5txYIT-JDscslwZuBHw0NbgQIf7Qear0
+
+var map;
+var service;
+var infowindow;
 
 var script = document.createElement('script');
 script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB5txYIT-JDscslwZuBHw0NbgQIf7Qear0&callback=initMap';
 script.defer = true;
 
-window.initMap = function () {
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8,
-    });
-}
+
+function initMap() {
+    
+    document.head.appendChild(script);
+  var sydney = new google.maps.LatLng(restaurantLat[0], restaurantLong[0]);
+  console.log(restaurantLat[0])
+
+  infowindow = new google.maps.InfoWindow();
+
+  map = new google.maps.Map(
+      document.getElementById('map'), {center: sydney, zoom: 15});}
+
+ /*var request = {
+    query: 'Museum of Contemporary Art Australia',
+    fields: ['name', 'geometry'],
+  };
+
+  var service = new google.maps.places.PlacesService(map);
+
+  service.findPlaceFromQuery(request, function(results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      for (var i = 0; i < results.length; i++) {
+        createMarker(results[i]);
+      }
+      map.setCenter(results[0].geometry.location);
+    }
+  });*/
+
+
+
+
+//window.initMap = function () {
+ //   map = new google.maps.Map(document.getElementById("map"), {
+  //      center: { lat: -34.397, lng: 150.644 },
+  //      zoom: 8,
+  //  });
+//}
 // JS API is loaded and available
 
 
 // Append the 'script' element to 'head'
-document.head.appendChild(script);
 
 
 

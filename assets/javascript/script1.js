@@ -207,31 +207,33 @@ function cuisineSearch(dropInputVal,cityid){
       
 }
 
-//https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyB5txYIT-JDscslwZuBHw0NbgQIf7Qear0
+//"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +restaurantLat[0] + "," +restaurantLong[0]+ "&radius=1500&type=restaurant&keyword=" +restaurantList[0] +"&key=AIzaSyB5txYIT-JDscslwZuBHw0NbgQIf7Qear0&callback=initMap"
 
 var map;
 var service;
 var infowindow;
 
 var script = document.createElement('script');
-script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB5txYIT-JDscslwZuBHw0NbgQIf7Qear0&callback=initMap';
+script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB5txYIT-JDscslwZuBHw0NbgQIf7Qear0&libraries=places&callback=initMap"
+//"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +restaurantLat[0] + "," +restaurantLong[0]+ "&radius=1500&type=restaurant&keyword=" +restaurantList[0] +"&key=AIzaSyB5txYIT-JDscslwZuBHw0NbgQIf7Qear0"
 script.defer = true;
 
 
 function initMap() {
-    
     document.head.appendChild(script);
+   
   var sydney = new google.maps.LatLng(restaurantLat[0], restaurantLong[0]);
   console.log(restaurantLat[0])
 
   infowindow = new google.maps.InfoWindow();
-
+  
   map = new google.maps.Map(
-      document.getElementById('map'), {center: sydney, zoom: 15});}
+      document.getElementById('map'), {center: sydney, zoom: 13});}
+      //createMarker(restaurantLat[0], restaurantLong[0]) }
 
  /*var request = {
-    query: 'Museum of Contemporary Art Australia',
-    fields: ['name', 'geometry'],
+    query: (restaurantList[0]),
+    fields: ['name'],
   };
 
   var service = new google.maps.places.PlacesService(map);
@@ -241,10 +243,10 @@ function initMap() {
       for (var i = 0; i < results.length; i++) {
         createMarker(results[i]);
       }
-      map.setCenter(results[0].geometry.location);
-    }
-  });*/
 
+    }
+  });
+}
 
 
 
@@ -257,7 +259,7 @@ function initMap() {
 // JS API is loaded and available
 
 
-// Append the 'script' element to 'head'
+// Append the 'script' element to 'head'*/
 
 
 

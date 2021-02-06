@@ -30,6 +30,10 @@ body {
     background-color: #FFDE59;
 }
 
+.submit {
+    margin-top:3%
+}
+
 /*.map-responsive {
     overflow: hidden;
     padding-bottom: 56.25%;

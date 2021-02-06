@@ -18,7 +18,17 @@ body {
 }
 
 .topcards{
-    margin:2%
+    margin:2%;
+    background-color: transparent;
+   
+
+}
+
+.toptext {
+    color: white;
+    background-color: white opacity .7;
+    
+    
 }
 .homeimage {
     display: inline-block;

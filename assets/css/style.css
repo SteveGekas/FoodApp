@@ -57,8 +57,8 @@ body {
 }
 
 .searchResults {
-    margin-top:5%;
-    padding:3%;
+   
+    padding:2%;
 
 }
 #map {
@@ -72,3 +72,13 @@ body {
     overflow-y: scroll;
 }
 
+.restResults {
+    margin:2%;
+    padding:1%;
+    border:2px outset;
+    border-color:lightgray;
+
+}
+
+.restResultsHeader {
+}

@@ -233,8 +233,8 @@ function restList() {
     resultsEl.hidden = false;
     for (i = 0; i < restaurantList.length; i++) {
         var restNameEl = document.createElement("div");
-        restNameEl.className = ("card");
-        var cardContent = ("<header class='card-header'><p class='card-header-title'>" +
+        restNameEl.className = ("card restResults");
+        var cardContent = ("<header class='card-header restResultsHeader'><p class='card-header-title restResultsTitle'>" +
         (restaurantList[i])+ "</p><select><option>Add to List</option></select></header>" + 
         "<div class='card-content'> <div class='media'><div class='media-left'><figure class='image is-48x48'><img src=" + restaurantImg[i] + 
         "></figure></div><div class='content'>" +

@@ -6,12 +6,143 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Foodist App Homepage </title>
+    <!-- Compressed CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link href="./assets/css/stylesheet.css" rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
 
 
 </head>
+
 <body>
+    <nav class="navbar has-background-warning" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="./index.html">
+                <img src="./assets/images/fig-dribbble.gif" width="50" height="28">
+            </a>
+
+            <a role="button" class="navbar-brand" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <a href="./index.html" class="navbar-item is-active">
+                    Home
+                </a>
+                <a href="./lists.html" class="navbar-item">
+                    List
+                </a>
+
+                <a href="./recipes.html" class="navbar-item">
+                    Recipes
+                </a>
+
+
+            </a>
+        </div>
+
+
+    </nav>
+    <div class="columns">
+        <div class="column is-one-third">
+            <div class="card topcards">
+                <div class="card-image  homeimage">
+                    <figure class="image is-128x128 cardicon">
+                        <img src="./assets/images/1.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <p class="card-header-title is-centered">
+                    Search For Restaurants
+                </p>
+            </div>
+        </div>
+        <div class="column is-one-third">
+            <div class="card topcards">
+
+                <div class="card-image homeimage">
+                    <figure class="image is-128x128 cardicon ">
+                        <img src="./assets/images/2.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <p class="card-header-title is-centered">
+                    Save to Your Lists
+                </p>
+
+            </div>
+        </div>
+        <div class="column is-one-third">
+            <div class="card topcards">
+                <div class="card-image homeimage">
+                    <figure class="image is-128x128 cardicon">
+                        <img src="./assets/images/3.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <p class="card-header-title is-centered">
+                    Discover Recipes While You Wait
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container is-fluid searchRest">
+        <div class="columns">
+            <div class="column search">
+
+                <div class="hero-body">
+                    <p class="title">
+                        Find a Restaurant
+                    </p>
+                    <div class="field card searchHomePage">
+                        <div class="field">
+
+                            <div class="control ">
+                                <input class="input searchCity" type="text" placeholder="Where do you want to go?">
+                            </div>
+
+                        </div>
+                        <div class="control">
+                            <div class="selectEl">
+                                <select class="select">
+                                    <option>Choose food category</option>
+                       
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control">
+                            <button class="button submit is-primary">Submit</button>
+                          </div>
+
+                    </div>
+
+                    <div class="card searchResults ">
+
+                        <h1>Restaurants</1>
+                        <div class="tile"></div>
+                        <div class="buttons"></div>
+
+                    </div>
+
+                </div>
+            </div>
+
+           <div class="column iframe">
+                <div id="map"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="container is-fluid searchresults">
+
+
+    </div>
+
+
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="assets/javascript/script1.js"></script>
 
 </body>
 

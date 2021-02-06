@@ -13,6 +13,14 @@ body {
    background-size: cover;
     
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  
 .navbar{
     margin-bottom: 1%;
 }

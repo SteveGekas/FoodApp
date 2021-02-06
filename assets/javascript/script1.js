@@ -103,7 +103,8 @@ var cuisine = [
     { cuisine_name: "Venezuelan", cuisine_id: "641" },
     { cuisine_name: "Vietnamese", cuisine_id: "99" }
 ]
-
+var resultsEl = document.querySelector(".searchResults")
+resultsEl.hidden = "true"
 var userRestSearch = [];
 var cuisineDropDownID = [];
 var cuisineDropDownName = [];
@@ -229,6 +230,7 @@ function cuisineSearch(dropInputVal, cityid) {
 }
 
 function restList() {
+    resultsEl.hidden = false;
     for (i = 0; i < restaurantList.length; i++) {
         var restNameEl = document.createElement("div");
         restNameEl.className = ("card");

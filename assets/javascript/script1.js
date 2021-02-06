@@ -113,6 +113,8 @@ var restaurantLat = [];
 var restaurantImg = [];
 var restaurantUrl = [];
 var restaurantMenu = [];
+var restaurantCuis = [];
+var restaurantAdd = [];
 
 
 
@@ -140,7 +142,6 @@ function handleSearchFormSubmit(event) {
 
     var searchInputVal = document.querySelector(".searchCity").value;
     var dropInputVal = document.querySelector(".select").value;
-    var dropInputText = document.querySelector(".select").textContent;
     userRestSearch.push(searchInputVal);
     cuisineDropDownID.push(dropInputVal);
 
@@ -199,9 +200,12 @@ function cuisineSearch(dropInputVal, cityid) {
                 var restNames = data.restaurants[i].restaurant.name;
                 var restLong = data.restaurants[i].restaurant.location.longitude;
                 var restLat = data.restaurants[i].restaurant.location.latitude;
-                var restImg = data.restaurants[i].restaurant.featured_image;
+                var restImg = data.restaurants[i].restaurant.thumb;
                 var restUrl = data.restaurants[i].restaurant.url;
                 var restMenu = data.restaurants[i].restaurant.menu_url;
+                var restCuisine = data.restaurants[i].restaurant.cuisines;
+                var restAddress = data.restaurants[i].restaurant.location.address;
+
                 console.log(restNames);
                 restaurantList.push(restNames);
                 restaurantLat.push(restLat);
@@ -209,10 +213,13 @@ function cuisineSearch(dropInputVal, cityid) {
                 restaurantImg.push(restImg);
                 restaurantUrl.push(restUrl);
                 restaurantMenu.push(restMenu);
+                restaurantCuis.push(restCuisine);
+                restaurantAdd.push (restAddress);
             }
             console.log(restaurantList)
             console.log(restaurantLat)
             console.log(restaurantLong)
+            console.log(restaurantCuis)
             restList();
             initMap();
 
@@ -224,30 +231,15 @@ function cuisineSearch(dropInputVal, cityid) {
 function restList() {
     for (i = 0; i < restaurantList.length; i++) {
         var restNameEl = document.createElement("div");
-        restNameEl.className = ("dropdown is-active column is-full");
-        var restNameElTrig = document.createElement("div");
-        restNameElTrig.className = ("dropdown-trigger");
-        restNameEl.appendChild(restNameElTrig);
-        var button = ("<button class='button is-fullwidth' aria-haspopup='true' aria-controls='dropdown-menu2'>"
-        + "<span>" + (restaurantList[i]) + "</span>" +
-         "<span class='icon is-small'> <i class='fas fa-angle-down' aria-hidden='true'></i>" +
-          "</span>" + "</button>")
-        restNameElTrig.innerHTML =button;
-        document.querySelector(".buttons").append(restNameEl);
-       // var restNamecardTitle = document.createElement("div");
-       // restNamecardTitle.className = ("card-header");
-
-    
-      
-     
-  /*<div class="dropdown-menu" id="dropdown-menu2" role="menu">
-    <div class="dropdown-content"></div>
-        div class="dropdown is-active">
-        <div class="dropdown-trigger">*/
-        //var restNameElContent = document.createTextNode(restaurantList[i])
-       // restNameEl.appendChild(restNamecardTitle)
-       // console.log(restNameElContent)
-       // restNamecardTitle.appendChild(restNameElContent)
+        restNameEl.className = ("card");
+        var cardContent = ("<header class='card-header'><p class='card-header-title'>" +
+        (restaurantList[i])+ "</p><select><option>Add to List</option></select></header>" + 
+        "<div class='card-content'> <div class='media'><div class='media-left'><figure class='image is-48x48'><img src=" + restaurantImg[i] + 
+        "></figure></div><div class='content'>" +
+       "<p>" + restaurantAdd[i] + "</p>" + "<p>" +restaurantCuis[i] + "</p></div></div>"
+        )
+        restNameEl.innerHTML =cardContent;
+        document.querySelector(".results").append(restNameEl);
         
     }
 }

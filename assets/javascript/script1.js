@@ -202,12 +202,11 @@ function handleSearchFormSubmit(event) {
 }
 
 function cuisineSearch(dropInputVal, cityid) {
-    console.log("I'M BEING CALLED" )
+    console.log("I'M BEING CALLED")
     console.log(dropInputVal);
     restaurantTwoURL = "https://developers.zomato.com/api/v2.1/search?entity_id=" + cityid + "&entity_type=city&cuisines=" + dropInputVal
     console.log(restaurantTwoURL)
     fetch(restaurantTwoURL, {
-        // credentials: 'include',
         headers: { "user-key": "6c1c69e843bf3372eb5e6a5fae766fcf" }
     })
 
@@ -244,15 +243,14 @@ function cuisineSearch(dropInputVal, cityid) {
 
             }
             console.log("HERE", restaurantSearch)
-        searches.push(restaurantSearch);
-        console.log(searches)
-        window.localStorage.setItem("restaurant_search", JSON.stringify(searches));
-        console.log("ANDREW OBJECT > ", restaurantSearch)
-        restList();
-       // initMap();
+            searches.push(restaurantSearch);
+            console.log(searches)
+            window.localStorage.setItem("restaurant_search", JSON.stringify(searches));
+            restList();
+            // initMap();
 
         })
-       
+
 
 }
 
@@ -261,22 +259,59 @@ function restList() {
     var localData = JSON.parse(localStorage.getItem("restaurant_search"))
     console.log("d8a", localData)
     document.querySelector(".results").innerHTML = ""
-    for (i = 0; i < 20; i++) {
+    for (i = 0; i < (localData[localData.length - 1].length); i++) {
         var restNameEl = document.createElement("div");
         restNameEl.className = ("card restResults");
         var cardContent = ("<header class='card-header restResultsHeader'><p class='card-header-title restResultsTitle'>" +
-        localData[(localData.length-1)][i].restNames + "</p><select><option>Add to List</option></select></header>" +
-            "<div class='card-content'> <div class='media'><div class='media-left'><figure class='image is-48x48'><img src=" + localData[(localData.length-1)][i].restImg +
+            localData[(localData.length - 1)][i].restNames + "</p><button class='button listButton'>Add to List</button></header>" +
+            "<div class='card-content'> <div class='media'><div class='media-left'><figure class='image is-48x48'><img src=" + localData[(localData.length - 1)][i].restImg +
             "></figure></div><div class='content'>" +
-            "<p>" + localData[(localData.length-1)][i].restAddress + "</p>" + "<p>" + localData[(localData.length-1)][i].restCuisine + "</p></div></div>"
+            "<p>" + localData[(localData.length - 1)][i].restAddress + "</p>" + "<p>" + localData[(localData.length - 1)][i].restCuisine + "</p></div></div>"
         )
-   
+
         restNameEl.innerHTML = cardContent;
         document.querySelector(".results").append(restNameEl);
-        
-        
+
+
 
     }
+    document.querySelector(".listButton").addEventListener('click', listCreate);
+}
+
+function listCreate() {
+
+    var modal = document.getElementById("myModal");
+
+    modal.style.display = "block";
+
+    var btn = document.querySelector(".addListBtn");
+
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+
+
+    }
+
+    btn.onclick = function () {
+       userText = document.querySelector(".listName").value;
+       newBtn = document.createElement("button");
+       newBtn.className = "button is-fullwidth"
+    newBtn.innerHTML = userText;
+    document.querySelector(".listPopUp").prepend(newBtn)
+    }
+
 }
 
 //"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +restaurantLat[0] + "," +restaurantLong[0]+ "&radius=1500&type=restaurant&keyword=" +restaurantList[0] +"&key=AIzaSyB5txYIT-JDscslwZuBHw0NbgQIf7Qear0&callback=initMap"
@@ -309,21 +344,21 @@ function initMap() {
    query: (restaurantList[0]),
    fields: ['name'],
  };
-
+ 
  var service = new google.maps.places.PlacesService(map);
-
+ 
  service.findPlaceFromQuery(request, function(results, status) {
    if (status === google.maps.places.PlacesServiceStatus.OK) {
      for (var i = 0; i < results.length; i++) {
        createMarker(results[i]);
      }
-
+ 
    }
  });
 }
-
-
-
+ 
+ 
+ 
 //window.initMap = function () {
 //   map = new google.maps.Map(document.getElementById("map"), {
  //      center: { lat: -34.397, lng: 150.644 },
@@ -331,12 +366,13 @@ function initMap() {
  //  });
 //}
 // JS API is loaded and available
-
-
+ 
+ 
 // Append the 'script' element to 'head'*/
 
 
 
 
 document.querySelector(".submit").addEventListener('click', handleSearchFormSubmit);
+
 

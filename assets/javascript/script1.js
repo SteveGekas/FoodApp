@@ -116,8 +116,30 @@ var restaurantUrl = [];
 var restaurantMenu = [];
 var restaurantCuis = [];
 var restaurantAdd = [];
+var restaurantInfo = [
+    { restaurantList },
+    { restaurantLat },
+    { restaurantLong },
+    { restaurantImg },
+    { restaurantUrl },
+    { restaurantMenu },
+    { restaurantCuis },
+    { restaurantAdd }
+]
+var searches = [];
 
+/*$(document).ready(function () {
+    if (localStorage.getItem("restaurant_search") !== null) {
 
+        var prevSearch = JSON.parse(localStorage.getItem("restaurant_search"));
+        searches = prevSearch
+        // restaurantInfo.push(prevSearch);
+        console.log(" SERACHES ", searches)
+        // console.log(restaurantInfo)
+        //window.localStorage.setItem("restaurant_search",JSON.stringify(restaurantInfo));
+
+    }
+});*/
 
 var cuisineListEl = document.querySelector(".select")
 for (i = 0; i < cuisine.length; i++) {
@@ -180,7 +202,7 @@ function handleSearchFormSubmit(event) {
 }
 
 function cuisineSearch(dropInputVal, cityid) {
-
+    console.log("I'M BEING CALLED" )
     console.log(dropInputVal);
     restaurantTwoURL = "https://developers.zomato.com/api/v2.1/search?entity_id=" + cityid + "&entity_type=city&cuisines=" + dropInputVal
     console.log(restaurantTwoURL)
@@ -197,7 +219,10 @@ function cuisineSearch(dropInputVal, cityid) {
         })
         .then(function (data) {
             console.log(data);
+
+            var restaurantSearch = [];
             for (i = 0; i < data.restaurants.length; i++) {
+
                 var restNames = data.restaurants[i].restaurant.name;
                 var restLong = data.restaurants[i].restaurant.location.longitude;
                 var restLat = data.restaurants[i].restaurant.location.latitude;
@@ -206,43 +231,51 @@ function cuisineSearch(dropInputVal, cityid) {
                 var restMenu = data.restaurants[i].restaurant.menu_url;
                 var restCuisine = data.restaurants[i].restaurant.cuisines;
                 var restAddress = data.restaurants[i].restaurant.location.address;
+                restaurantSearch.push({
+                    restNames,
+                    restLong,
+                    restLat,
+                    restImg,
+                    restUrl,
+                    restMenu,
+                    restCuisine,
+                    restAddress
+                })
 
-                console.log(restNames);
-                restaurantList.push(restNames);
-                restaurantLat.push(restLat);
-                restaurantLong.push(restLong);
-                restaurantImg.push(restImg);
-                restaurantUrl.push(restUrl);
-                restaurantMenu.push(restMenu);
-                restaurantCuis.push(restCuisine);
-                restaurantAdd.push (restAddress);
             }
-            console.log(restaurantList)
-            console.log(restaurantLat)
-            console.log(restaurantLong)
-            console.log(restaurantCuis)
-            restList();
-            initMap();
+            console.log("HERE", restaurantSearch)
+        searches.push(restaurantSearch);
+        console.log(searches)
+        window.localStorage.setItem("restaurant_search", JSON.stringify(searches));
+        console.log("ANDREW OBJECT > ", restaurantSearch)
+        restList();
+       // initMap();
 
         })
-
+       
 
 }
 
 function restList() {
     resultsEl.hidden = false;
-    for (i = 0; i < restaurantList.length; i++) {
+    var localData = JSON.parse(localStorage.getItem("restaurant_search"))
+    console.log("d8a", localData)
+    document.querySelector(".results").innerHTML = ""
+    for (i = 0; i < 20; i++) {
         var restNameEl = document.createElement("div");
         restNameEl.className = ("card restResults");
         var cardContent = ("<header class='card-header restResultsHeader'><p class='card-header-title restResultsTitle'>" +
-        (restaurantList[i])+ "</p><select><option>Add to List</option></select></header>" + 
-        "<div class='card-content'> <div class='media'><div class='media-left'><figure class='image is-48x48'><img src=" + restaurantImg[i] + 
-        "></figure></div><div class='content'>" +
-       "<p>" + restaurantAdd[i] + "</p>" + "<p>" +restaurantCuis[i] + "</p></div></div>"
+        localData[(localData.length-1)][i].restNames + "</p><select><option>Add to List</option></select></header>" +
+            "<div class='card-content'> <div class='media'><div class='media-left'><figure class='image is-48x48'><img src=" + localData[(localData.length-1)][i].restImg +
+            "></figure></div><div class='content'>" +
+            "<p>" + localData[(localData.length-1)][i].restAddress + "</p>" + "<p>" + localData[(localData.length-1)][i].restCuisine + "</p></div></div>"
         )
-        restNameEl.innerHTML =cardContent;
+   
+        restNameEl.innerHTML = cardContent;
         document.querySelector(".results").append(restNameEl);
         
+        
+
     }
 }
 
@@ -259,6 +292,7 @@ script.defer = true;
 
 
 function initMap() {
+
     document.head.appendChild(script);
 
     var sydney = new google.maps.LatLng(restaurantLat[0], restaurantLong[0]);

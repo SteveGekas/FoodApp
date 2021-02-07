@@ -127,19 +127,9 @@ var restaurantInfo = [
     { restaurantAdd }
 ]
 var searches = [];
+var lists = [];
+var modal = document.getElementById("myModal");
 
-/*$(document).ready(function () {
-    if (localStorage.getItem("restaurant_search") !== null) {
-
-        var prevSearch = JSON.parse(localStorage.getItem("restaurant_search"));
-        searches = prevSearch
-        // restaurantInfo.push(prevSearch);
-        console.log(" SERACHES ", searches)
-        // console.log(restaurantInfo)
-        //window.localStorage.setItem("restaurant_search",JSON.stringify(restaurantInfo));
-
-    }
-});*/
 
 var cuisineListEl = document.querySelector(".select")
 for (i = 0; i < cuisine.length; i++) {
@@ -155,7 +145,6 @@ for (i = 0; i < cuisine.length; i++) {
     // add opt to end of select box (sel)
     cuisineListEl.appendChild(opt);
 }
-
 
 
 
@@ -272,23 +261,30 @@ function restList() {
         restNameEl.innerHTML = cardContent;
         document.querySelector(".results").append(restNameEl);
 
-
+       
 
     }
-    document.querySelector(".listButton").addEventListener('click', listCreate);
+    const addBtn = document.querySelectorAll(".listButton");
+    addBtn.forEach(addBtn => {
+        addEventListener('click', addList
+           ) })
+
 }
 
-function listCreate() {
 
-    var modal = document.getElementById("myModal");
 
-    modal.style.display = "block";
 
-    var btn = document.querySelector(".addListBtn");
+function addList() {
+
+
+    modal.style.display = "block"
 
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
@@ -297,22 +293,32 @@ function listCreate() {
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
-        if (event.target == modal) {
+        if (event.target == modal || event.target == span) {
             modal.style.display = "none";
         }
-
-
     }
 
+
+    var btn = document.querySelector(".addListBtn");
+
+
+
     btn.onclick = function () {
-       userText = document.querySelector(".listName").value;
-       newBtn = document.createElement("button");
-       newBtn.className = "button is-fullwidth"
-    newBtn.innerHTML = userText;
-    document.querySelector(".listPopUp").prepend(newBtn)
+        userText = document.querySelector(".listName").value;
+       // var listRestName = this.closest(document.querySelector(".restResultsHeader")).value;
+        lists.push(userText); //listRestName);
+        newBtn = document.createElement("button");
+        newBtn.className = "button is-fullwidth"
+        newBtn.innerHTML = userText;
+        document.querySelector(".listPopUp").prepend(newBtn)
+
+
+        console.log(lists)
+        localStorage.setItem("list_names", JSON.stringify(lists));
     }
 
 }
+
 
 //"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +restaurantLat[0] + "," +restaurantLong[0]+ "&radius=1500&type=restaurant&keyword=" +restaurantList[0] +"&key=AIzaSyB5txYIT-JDscslwZuBHw0NbgQIf7Qear0&callback=initMap"
 
@@ -374,5 +380,4 @@ function initMap() {
 
 
 document.querySelector(".submit").addEventListener('click', handleSearchFormSubmit);
-
 

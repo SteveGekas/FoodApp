@@ -128,7 +128,7 @@ var restaurantInfo = [
 ]
 var searches = [];
 var lists = [];
-var modal = document.getElementById("myModal");
+
 
 
 var cuisineListEl = document.querySelector(".select")
@@ -151,7 +151,7 @@ for (i = 0; i < cuisine.length; i++) {
 //var googleMap = document.querySelector("#map");
 function handleSearchFormSubmit(event) {
     event.preventDefault();
-    
+
 
     var searchInputVal = document.querySelector(".searchCity").value;
     var dropInputVal = document.querySelector(".select").value;
@@ -187,7 +187,7 @@ function handleSearchFormSubmit(event) {
             cuisineSearch(dropInputVal, cityid);
         })
         .catch(function () {
-       
+
             swal("Oops!", "Something went wrong with your search! Try again", "error");
 
             return;
@@ -236,7 +236,7 @@ function cuisineSearch(dropInputVal, cityid) {
                 })
 
             }
-            
+
             console.log("HERE", restaurantSearch)
             searches.push(restaurantSearch);
             console.log(searches)
@@ -271,67 +271,63 @@ function restList() {
         restNameEl.innerHTML = cardContent;
         document.querySelector(".results").append(restNameEl);
 
-       
 
-    }
+
+    };
     const addBtn = document.querySelector(".results");
 
-    addBtn.addEventListener("click",(event) => {
-        const addBtn = event.target.nodeName === 'BUTTON';
-        if (!isButton) {
-          return;
-        }
-      
-        addList;
-      })
+    addBtn.addEventListener("click", (event) => {
+        // event.preventDefault();
 
-}
+        const isBtn = event.target.element === 'button';
+        // if (!isBtn) {
+        //   return;
+        // }
 
+        swal(
+            {
+                title: "Add to List!",
+                text: "Add to an existing list or create a new one",
+                content: "input",
+                buttons: {
 
-//something is going on here and its adding a bunch of listener events to each button... hmmm 
+                    Add: {
+                        text: "Add",
+                        confirm: true
+                    },
+                    Close: {
+                        text: "Close",
+                        closeModal: true
+                    }
+                }
+            })
+            .then(name => {
+                if (!name) throw null;
 
-function addList() {
-   
-    swal("Oops!", "Something went wrong with your search! Try again", "error");
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close");
-
-    // When the user clicks on the button, open the modal
-
-
-    // When the user clicks on <span> (x), close the modal
-    window.onclick = function (event) {
-        if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-    // When the user clicks anywhere outside of the modal, close it
-    /*window.onclick = function (event) {
-        if (event.target == modal || event.target == span) {
-            modal.style.display = "none";
-        }
-    }*/
-
-
-    var btn = document.querySelector(".addListBtn");
+                else {
 
 
 
-    btn.onclick = function () {
-        userText = document.querySelector(".listName").value;
-       // var listRestName = this.closest(document.querySelector(".restResultsHeader")).value;
-        lists.push(userText); //listRestName);
-        newBtn = document.createElement("button");
-        newBtn.className = "button is-fullwidth"
-        newBtn.innerHTML = userText;
-        document.querySelector(".listPopUp").prepend(newBtn)
+                    userText = document.querySelector(".swal-content__input").value;
+                    var listRestName = $(".results").closest("class", "restResultsTitle").text;
+                    console.log($(this).closest("class", "restResultsTitle"))
+                    console.log($(".results").closest("class", "restResultsTitle"))
+                    lists.push(userText, listRestName);
+                    // var submitBTN = document.querySelector(".swal-button--Add")
+
+                    newBtn = document.createElement("button");
+                    newBtn.className = "button is-fullwidth"
+                    newBtn.innerHTML = userText;
+                    document.querySelector(".swal-content__input").prepend(newBtn)
 
 
-        console.log(lists)
-        localStorage.setItem("list_names", JSON.stringify(lists));
-    }
+                    console.log(lists)
+                    localStorage.setItem("list_names", JSON.stringify(lists));
+                    //})
+                }
+            })
 
+    })
 }
 
 

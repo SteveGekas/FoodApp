@@ -14,11 +14,13 @@
 </head>
 
 <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+
+    <nav class="navbar is-white" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="./index.html">
                 <img src="./assets/images/fig-dribbble.gif" width="50" height="28">
             </a>
+
 
             <a role="button" class="navbar-brand" aria-label="menu" aria-expanded="false"
                 data-target="navbarBasicExample">
@@ -29,7 +31,9 @@
                     Your Lists
                 </a>
 
+
             </a>
+
         </div>
 
 
@@ -37,69 +41,70 @@
 
 
 
-    <div class="container is-fluid searchRest">
-        <div class="columns">
-            <div class="column search">
+    <div class="column is-full topbar">
+        <div class="columns is-full headertext">
+            <h1>THE FOODIST</h1>
+        </div>
+            <div class="columns is-full subtext">
+            <p>Restaurants for your bucket list</p>
+        </div>
+
+        <div class="columns is-full">
+            <div class="column is-half search">
 
                 <div class="hero-body">
-                    <p class="title">
-                        Find a Restaurant
-                    </p>
                     <div class="field card searchHomePage">
                         <div class="field">
 
                             <div class="control ">
-                                <input class="input searchCity" type="text" placeholder="Where do you want to go?">
+                                <input class="input is-warning searchCity" type="text"
+                                    placeholder="Where do you want to go?">
                             </div>
 
                         </div>
                         <div class="control">
-                            <div class="selectEl">
-                                <select class="select">
-                                    <option>Choose food category</option>
+                            <div class="select is-warning">
+                                <select class="select foodSelect">
+                                    <option>Choose a food category</option>
 
                                 </select>
                             </div>
                         </div>
                         <div class="control">
-                            <button class="button submit is-primary">Submit</button>
+                            <button class="button submit is-warning">Search</button>
                         </div>
 
                     </div>
-
-                    <div class="card searchResults ">
-
-                        <h1>Restaurants</1>
-                            <div class="tile"></div>
-                            <card class="card results"></card>
-
-                    </div>
-
                 </div>
-
             </div>
-
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>Choose a list or add a new one</p>
-                    <div class="control listPopUp">
-                        <input class="input listName is-warning" type="text" placeholder="Add a List">
-
-                        <button class="button is-primary addListBtn">Submit</button>
-                    </div>
-
-
-                </div>
-
-            </div>
-
-            <div class="column iframe">
-                <div id="map"></div>
-            </div>
-
         </div>
     </div>
+
+
+
+    <div class="columns">
+        <div class="column is-one-half">
+            <div class="card searchResults">
+
+                <card class="card results"></card>
+
+            </div>
+        </div>
+
+        <div class="column is-one-half">
+            <div id="map"></div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
 
 
 

@@ -131,7 +131,7 @@ var lists = [];
 
 
 
-var cuisineListEl = document.querySelector(".select")
+var cuisineListEl = document.querySelector(".foodSelect")
 for (i = 0; i < cuisine.length; i++) {
     var opt = document.createElement('option');
     opt.className = "formVal";
@@ -154,7 +154,7 @@ function handleSearchFormSubmit(event) {
 
 
     var searchInputVal = document.querySelector(".searchCity").value;
-    var dropInputVal = document.querySelector(".select").value;
+    var dropInputVal = document.querySelector(".foodSelect").value;
     userRestSearch.push(searchInputVal);
     cuisineDropDownID.push(dropInputVal);
 

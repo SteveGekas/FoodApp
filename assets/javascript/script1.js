@@ -102,9 +102,9 @@ var cuisine = [
     { cuisine_name: "Vegetarian", cuisine_id: "308" },
     { cuisine_name: "Venezuelan", cuisine_id: "641" },
     { cuisine_name: "Vietnamese", cuisine_id: "99" }
-]
-var resultsEl = document.querySelector(".searchResults")
-resultsEl.hidden = "true"
+];
+var resultsEl = document.querySelector(".searchResults");
+resultsEl.hidden = "true";
 var userRestSearch = [];
 var cuisineDropDownID = [];
 var cuisineDropDownName = [];
@@ -274,16 +274,13 @@ function restList() {
 
 
     };
-    const addBtn = document.querySelector(".results");
 
-    addBtn.addEventListener("click", (event) => {
-        // event.preventDefault();
 
-        const isBtn = event.target.element === 'button';
-        // if (!isBtn) {
-        //   return;
-        // }
 
+
+    $(".listButton").on("click", function () {
+        console.log($(this))
+        var restName = ($(this).siblings(".restResultsTitle").text())
         swal(
             {
                 title: "Add to List!",
@@ -301,34 +298,21 @@ function restList() {
                     }
                 }
             })
-            .then(name => {
-                if (!name) throw null;
-
-                else {
-
-
-
-                    userText = document.querySelector(".swal-content__input").value;
-                    var listRestName = $(".results").closest("class", "restResultsTitle").text;
-                    console.log($(this).closest("class", "restResultsTitle"))
-                    console.log($(".results").closest("class", "restResultsTitle"))
-                    lists.push(userText, listRestName);
-                    // var submitBTN = document.querySelector(".swal-button--Add")
-
-                    newBtn = document.createElement("button");
-                    newBtn.className = "button is-fullwidth"
-                    newBtn.innerHTML = userText;
-                    document.querySelector(".swal-content__input").prepend(newBtn)
-
-
-                    console.log(lists)
-                    localStorage.setItem("list_names", JSON.stringify(lists));
-                    //})
-                }
+            $(".swal-button--Add").on("click", function () {
+                listName = document.querySelector(".swal-content__input").value;
+               
+                console.log("test")
+                lists.push( {userText,restName}); 
+                localStorage.setItem("list_names", JSON.stringify(lists));
             })
 
+
+
+      
     })
 }
+
+
 
 
 //"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +restaurantLat[0] + "," +restaurantLong[0]+ "&radius=1500&type=restaurant&keyword=" +restaurantList[0] +"&key=AIzaSyB5txYIT-JDscslwZuBHw0NbgQIf7Qear0&callback=initMap"

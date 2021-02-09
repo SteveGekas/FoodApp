@@ -258,6 +258,7 @@ function restList() {
     var localData = JSON.parse(localStorage.getItem("restaurant_search"))
     console.log("d8a", localData)
     document.querySelector(".results").innerHTML = ""
+
     for (i = 0; i < (localData[localData.length - 1].length); i++) {
         var restNameEl = document.createElement("div");
         restNameEl.className = ("card restResults");
@@ -281,6 +282,7 @@ function restList() {
     $(".listButton").on("click", function () {
         console.log($(this))
         var restName = ($(this).siblings(".restResultsTitle").text())
+       
         swal(
             {
                 title: "Add to List!",
@@ -290,7 +292,9 @@ function restList() {
 
                     Add: {
                         text: "Add",
-                        confirm: true
+                        confirm: true,
+                        closeModal: false
+
                     },
                     Close: {
                         text: "Close",
@@ -298,17 +302,63 @@ function restList() {
                     }
                 }
             })
+            
+        if (lists.length != 0) {
+            var localList = localStorage.getItem("list_names")
+            var listNames = JSON.parse(localList)
+            console.log(listNames)
+            console.log(lists)
+           // for (i = 0; i < lists.length; i++) {
+            lists.forEach(function (item) {
+                var savedList = document.createElement("button")
+                savedList.className = "button is-fullwidth userList";
+                savedList.innerHTML = item.listName;
+                $(".swal-text").append(savedList);
+            })
+                
+               
+            
             $(".swal-button--Add").on("click", function () {
                 listName = document.querySelector(".swal-content__input").value;
+
+                console.log(listName)
+               lists.push({ listName, restName });
+               localStorage.setItem("list_names", JSON.stringify(lists));
                
-                console.log("test")
-                lists.push( {listName,restName}); 
+            })
+            $(".userList").on("click", function(){
+                console.log($(this))
+                listName = ($(this)[0].childNodes[0].data);
+                console.log(listName);
+                lists.push({ listName, restName });
                 localStorage.setItem("list_names", JSON.stringify(lists));
             })
+        }
+        else {
+            $(".swal-button--Add").on("click", function () {
+                listName = document.querySelector(".swal-content__input").value;
+
+                console.log("test")
+                lists.push({ listName, restName });
+                localStorage.setItem("list_names", JSON.stringify(lists));
+                var savedList = document.createElement("button")
+                savedList.className = "button is-fullwidth userList";
+                savedList.innerHTML = listName;
+                $(".swal-text").append(savedList);
+
+
+            })
+            $(".userList").on("click", function(){
+                listName = ($(this)[0].childNodes[0].data);
+                console.log(listName);
+                lists.push({ listName, restName });
+            })
+        
+        }
+ 
 
 
 
-      
     })
 }
 
@@ -350,7 +400,7 @@ function initMap() {
  
  service.findPlaceFromQuery(request, function(results, status) {
    if (status === google.maps.places.PlacesServiceStatus.OK) {
-     for (var i = 0; i < results.length; i++) {
+     for v{
        createMarker(results[i]);
      }
  

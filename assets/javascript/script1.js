@@ -302,7 +302,7 @@ function restList() {
                 listName = document.querySelector(".swal-content__input").value;
                
                 console.log("test")
-                lists.push( {userText,restName}); 
+                lists.push( {listName,restName}); 
                 localStorage.setItem("list_names", JSON.stringify(lists));
             })
 

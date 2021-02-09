@@ -280,6 +280,7 @@ function restList() {
 
 
     $(".listButton").on("click", function () {
+        
         console.log($(this))
         var restName = ($(this).siblings(".restResultsTitle").text())
        
@@ -293,7 +294,7 @@ function restList() {
                     Add: {
                         text: "Add",
                         confirm: true,
-                        closeModal: false
+                        //closeModal: true,
 
                     },
                     Close: {
@@ -302,17 +303,19 @@ function restList() {
                     }
                 }
             })
+            var localList = localStorage.getItem("list_names")
+        if (localList.length != 0) {
             
-        if (lists.length != 0) {
             var localList = localStorage.getItem("list_names")
             var listNames = JSON.parse(localList)
             console.log(listNames)
             console.log(lists)
            // for (i = 0; i < lists.length; i++) {
-            lists.forEach(function (item) {
+            listNames.forEach(function (item) {
                 var savedList = document.createElement("button")
                 savedList.className = "button is-fullwidth userList";
                 savedList.innerHTML = item.listName;
+                console.log(item.listName)
                 $(".swal-text").append(savedList);
             })
                 
@@ -331,7 +334,7 @@ function restList() {
                 listName = ($(this)[0].childNodes[0].data);
                 console.log(listName);
                 lists.push({ listName, restName });
-                localStorage.setItem("list_names", JSON.stringify(lists));
+               localStorage.setItem("list_names", JSON.stringify(lists));
             })
         }
         else {
@@ -348,11 +351,7 @@ function restList() {
 
 
             })
-            $(".userList").on("click", function(){
-                listName = ($(this)[0].childNodes[0].data);
-                console.log(listName);
-                lists.push({ listName, restName });
-            })
+    
         
         }
  

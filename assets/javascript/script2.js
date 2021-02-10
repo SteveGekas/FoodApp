@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-=======
+
 // function restList() {
 //     resultsEl.hidden = false;restaurant_sea
 //     let localData = JSON.parse(localStorage.getItem("list_names"))
@@ -113,5 +112,3 @@ function getValue() {
 }
 
 //console.log(getValue());*/
-
->>>>>>> Stashed changes

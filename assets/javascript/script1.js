@@ -257,23 +257,18 @@ function restList() {
 
 
 
-    $(".listButton").on("click", function (event) {
+    $(".listButton").on("click", function () {
      
-
+       
         let restName = ($(this).siblings(".restResultsTitle").text())
+       
 
         swal(
             {
-                title: "Add to List!",
-                text: "Add to an existing list or create a new one",
-                content: "input",
+                title: "Added to Your Foodie List!",
+               
                 buttons: {
 
-                    Add: {
-                        text: "Add",
-                        confirm: true,
-
-                    },
                     Close: {
                         text: "Close",
                         closeModal: true
@@ -285,48 +280,15 @@ function restList() {
             console.log("first",localList)
         
         if (localList != null) {
-
-            
-            let listNames = JSON.parse(localList)
-            lists = listNames
-            listNames.forEach(function (item) {
-                console.log("second",localList)
-                let savedList = document.createElement("button")
-                savedList.className = "button is-fullwidth userList";
-                savedList.innerHTML = item.listName;
-                $(".swal-text").append(savedList);})
-    
-            $(".swal-button--Add").on("click", function () {
-                console.log("third",localList)
-                listName = document.querySelector(".swal-content__input").value;
-                lists.push({ listName, restName });
-                localStorage.setItem("list_names", JSON.stringify(lists));
-
-            })
-
-            $(".userList").on("click", function () {
-                console.log("fourth",localList)
-                listName = ($(this)[0].childNodes[0].data);
-                lists.push({ listName, restName });
-                localStorage.setItem("list_names", JSON.stringify(lists));
-            })
+            let localListData = localStorage.getItem("list_names", JSON.stringify(lists));
+            listNames = JSON.parse(localListData)
+            lists=JSON.parse(localListData)
+            lists.push(restName);
+            localStorage.setItem("list_names", JSON.stringify(lists));
         }
-        else {
-            $(".swal-button--Add").on("click", function () {
-                console.log("else",localList)
-                listName = document.querySelector(".swal-content__input").value;
-                lists.push({ listName, restName });
-                localStorage.setItem("list_names", JSON.stringify(lists));
-                let savedList = document.createElement("button")
-                savedList.className = "button is-fullwidth userList";
-                savedList.innerHTML = listName;
-                $(".swal-text").append(savedList);
-                localStorage.setItem("list_names", JSON.stringify(lists));
+        else{ lists.push(restName);
+            localStorage.setItem("list_names", JSON.stringify(lists));}
 
-
-            })
-
-        }
 
     })
 }

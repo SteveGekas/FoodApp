@@ -33,7 +33,7 @@ The "Foodist" app provides a place for “foodies (people who enjoy eating out a
 
 # Link to the website:
 
-https://stevegekas.github.io/FoodApp/map.html
+stevegekas.github.io/foodapp/
 
 # Below are images showing the functional webpages:
 

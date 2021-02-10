@@ -23,6 +23,7 @@
 
 // }
 
+
 var restNames =[];
 $(document).ready(function() {
 
@@ -65,6 +66,9 @@ $(document).ready(function() {
 })
 
 /*function getParams() {
+=======
+
+
     // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
     let searchParamsArr = document.location.search.split('&');
 
@@ -97,8 +101,10 @@ function restNames() {
     //console.log(localStorage)
 }
 function getValue() {
+
 	return localStorage.getItem('restNmes');
 
 }
 
 //console.log(getValue());*/
+

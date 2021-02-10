@@ -39,5 +39,5 @@ https://stevegekas.github.io/FoodApp/map.html
 
 ## The landing page:
 
-![plot](./assets/images/placeholder.jpeg)
+![plot](./assets/images/ReadMe1.jpeg)
 

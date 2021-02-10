@@ -280,19 +280,21 @@ function restList() {
                     }
                 }
             })
-        let localList = localStorage.getItem("list_names")
-        console.log("first",localList)
-        let listNames = JSON.parse(localList)
-        listNames.forEach(function (item) {
-            console.log("second",localList)
-            let savedList = document.createElement("button")
-            savedList.className = "button is-fullwidth userList";
-            savedList.innerHTML = item.listName;
-            $(".swal-text").append(savedList);
-            
-        })
+       
+            let localList = localStorage.getItem("list_names")
+            console.log("first",localList)
+        
         if (localList != null) {
 
+            
+            let listNames = JSON.parse(localList)
+            lists = listNames
+            listNames.forEach(function (item) {
+                console.log("second",localList)
+                let savedList = document.createElement("button")
+                savedList.className = "button is-fullwidth userList";
+                savedList.innerHTML = item.listName;
+                $(".swal-text").append(savedList);})
     
             $(".swal-button--Add").on("click", function () {
                 console.log("third",localList)

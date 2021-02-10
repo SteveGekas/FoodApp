@@ -24,8 +24,51 @@
 // }
 
 
+var restNames =[];
+$(document).ready(function() {
 
-function getParams() {
+    let localStor = localStorage.getItem("list_names")
+    let listParse = JSON.parse(localStor)
+    let localStorSearch = localStorage.getItem("restaurant_search")
+    let listParseSearch = JSON.parse(localStorSearch)
+    //let listParseName = listParse.restName
+   
+    console.log(listParse)
+    for (i = 0; i < listParse.length; i++) {
+        let listCard = document.createElement('div');
+        listCard.className = "card"
+        let listName = document.createElement('div');
+        listName.className = "card-header"
+        let listRest = document.createElement('div');
+        listRest.className = "card-content";
+        listRest.innerHTML = listParse[i].restName
+        
+        listName.innerHTML = listParse[i].listName
+        listName.append(listRest)
+        listCard.append(listName)
+        $(".restList").append(listCard)}
+
+        for (i = 0; i < listParse.length; i++) {restNames.push(listParse[i].restName)}
+        console.log(restNames)
+        
+    for (i = 0; i < listParseSearch[listParseSearch.length-1].length; i++)
+    {
+        if ((listParseSearch[(listParseSearch.length-1)][i].restNames).includes(restNames[i]))
+        {let newDiv = document.createElement('div');
+        newDiv.className = "card-content";
+        newDiv.innerHTML=listParseSearch[listParseSearch.length-1][i].restUrl;
+            $(".card-content").append(newDiv);
+    
+    }
+    else {console.log(listParse[0].restName);}
+
+  }
+})
+
+/*function getParams() {
+=======
+
+
     // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
     let searchParamsArr = document.location.search.split('&');
 
@@ -58,8 +101,10 @@ function restNames() {
     //console.log(localStorage)
 }
 function getValue() {
-	return localStorage.getItem('restNmes');  
+
+	return localStorage.getItem('restNmes');
 
 }
 
-//console.log(getValue());
+//console.log(getValue());*/
+

@@ -71,3 +71,21 @@
     border: 2px outset;
     border-color: lightgray;
 }
+
+.lists {
+        background-image: url("../images/Decor\ Online\ Store\ Website\ \(11\).png");
+        /* Full height */
+        height: 75vh;
+      
+      
+        
+        /* Center and scale the image nicely */
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+}
+
+.listPageCard{
+    margin: 2%;
+    padding: 1%;
+}

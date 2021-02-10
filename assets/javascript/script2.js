@@ -1,3 +1,4 @@
+
 // function restList() {
 //     resultsEl.hidden = false;restaurant_sea
 //     let localData = JSON.parse(localStorage.getItem("list_names"))
@@ -31,40 +32,42 @@ $(document).ready(function () {
     let listParse = JSON.parse(localStor);
     let localStorSearch = localStorage.getItem("restaurant_search")
     let listParseSearch = JSON.parse(localStorSearch)
+    
+    console.log(restNames)
     //let listParseName = listParse.restName
 
-    console.log(listParse)
+    console.log(listParseSearch)
     for (i = 0; i < listParse.length; i++) {
         let listCard = document.createElement("div");
-        listCard.className = "card";
+        listCard.className = "card listPageCard";
         let listName = document.createElement("div");
         listName.className = "card-header";
-        let listRest = document.createElement("div");
-        listRest.className = "card-content";
-        listRest.innerHTML = listParse[i].restName
-
-        listName.innerHTML = listParse[i].listName
-        listName.append(listRest)
-        listCard.append(listName)
-        $(".restList").append(listCard)
+        listName.innerHTML = listParse[i];
+        listCard.append(listName);
+        $(".restList").append(listCard);
 
     }
-
-    for (i = 0; i < listParse.length; i++) { restNames.push(listParse[i].restName) }
-    console.log(restNames)
-
+    
+    for (i = 0; i < (listParseSearch.length) ; i++){
+    var intersections = listParse.filter(e => listParseSearch[i][i].restNames.indexOf(e) !== -1);
+    console.log(intersections)}
+})
+  /* for (i = 0; i < listParse.length; i++) { restNames.push(listParse[i].restName) }
+    console.log(restNames)*/
+ /*var nameEq =(listParseSearch[(listParseSearch.length - 1)].restNames) === (listParse[i])
     for (i = 0; i < listParseSearch[listParseSearch.length - 1].length; i++) {
-        if ((listParseSearch[(listParseSearch.length - 1)][i].restNames).includes(restNames[i])) {
+        if ((listParseSearch[(listParseSearch.length - 1)].restNames) === (listParse[i])) {
             let newDiv = document.createElement('div');
             newDiv.className = "card-content";
-            newDiv.innerHTML = listParseSearch[listParseSearch.length - 1][i].restUrl;
-            $(".card-content").append(newDiv);
+            newDiv.innerHTML = $(this).nameEq.restUrl
+            $(".card-header").append(newDiv);
 
         }
-        else { console.log(listParse[0].restName); }
+        else { console.log(listParse[0]); 
+        console.log(listParseSearch[(listParseSearch.length - 1)][0].restNames)}
 
-    }
-})
+    }*/
+
 
 
 /*function getParams() {
@@ -109,4 +112,3 @@ function getValue() {
 }
 
 //console.log(getValue());*/
-

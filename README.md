@@ -41,3 +41,17 @@ stevegekas.github.io/foodapp/
 
 ![plot](./assets/images/ReadMe1.jpeg)
 
+## Creating a list of restaurants based on cuisine type and location:
+
+![plot](./assets/images/ReadMe2.jpeg)
+
+## Pop up confirming the restaurant is added to the user's list on the lists page:
+
+![plot](./assets/images/ReadMe3.jpeg)
+
+## Restaurant added to the lists page:
+
+![plot](./assets/images/ReadMe4.jpeg)
+
+
+

@@ -1,61 +1,49 @@
-body {
-
-
-    background-image: url("../images/cherrytomato.jpg");
-
-
-     /* Full height */
-   height: 100vh;
- 
-   /* Center and scale the image nicely */
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
-    
+.body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
+.topbar {
+    background-image: url("../images/Decor\ Online\ Store\ Website\ \(11\).png");
+    /* Full height */
+    height: 75vh;
   
-.navbar{
-    margin-bottom: 1%;
+  
+    
+    /* Center and scale the image nicely */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 
 }
 
-
-
-.topcards{
-    margin:2%;
+.navbar {
     background-color: transparent;
-   
-
 }
 
-.toptext {
-    color: white;
-    background-color: white opacity .7;
+.headertext{
+    font-size: 48px;
+    text-indent:2vw;
+    color:white;
+    padding: 3%;
+    padding-bottom: 0%;
+    font-weight: bolder;
+}
+.subtext {
+    font-size: 24px;
+    text-indent:2vw;
+    color:white;
+    padding: 3%;
+    padding-bottom: 0%;
     
-    
-}
-.homeimage {
-    display: inline-block;
-    margin-top: 5%;
-    margin-left: 25%;
-    margin-right: 25%;
-    width: 50%;
-}
 
-.searchRest {
 }
 
 .submit {
-    margin-top:3%;
-
+    margin-top: 3%;
 }
+
+
 
 /*.map-responsive {
     overflow: hidden;
@@ -74,30 +62,29 @@ body {
 }*/
 
 .searchHomePage {
-    padding:3%;
+    padding: 3%;
 }
 
 .searchResults {
-   
-    padding:2%;
-
+    height: 650px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 2%;
 }
+
 #map {
     height: 100%;
-  }
-
+}
 
 .results {
-    height:650px;
+    height: 650px;
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
 .restResults {
-    margin:2%;
-    padding:1%;
-    border:2px outset;
-    border-color:lightgray;
-
+    margin: 2%;
+    padding: 1%;
+    border: 2px outset;
+    border-color: lightgray;
 }
-

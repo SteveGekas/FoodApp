@@ -53,5 +53,13 @@ stevegekas.github.io/foodapp/
 
 ![plot](./assets/images/ReadMe4.jpeg)
 
+## Map functionality:
+
+![plot](./assets/images/ReadMe5.jpeg)
+
+![plot](./assets/images/ReadMe6.jpeg)
+
+![plot](./assets/images/ReadMe7.jpeg)
+
 
 
